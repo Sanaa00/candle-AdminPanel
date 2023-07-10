@@ -13,7 +13,7 @@ function SidbaR() {
       </div>
        {sidbarName.map((name)=>{
        return <NavLink to={name.url} key={name.id} className={
-        ({isActive})=>isActive?" bg-purple-300 p-4 font-semibold text-gray-800 flex  items-center":" font-semibold text-gray-800 p-4 flex items-center" }>
+        ({isActive})=>isActive?" bg-customPurple p-4 font-semibold text-gray-50 flex  items-center":" font-semibold text-gray-800 p-4 flex items-center" }>
            <span className='pr-2'>{name.icon}</span> {name.name}
          </NavLink>
        })}

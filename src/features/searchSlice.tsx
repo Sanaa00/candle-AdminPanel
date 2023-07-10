@@ -7,7 +7,6 @@ const initialState: searchProps = {
      search:""
 }
 
-
 const SearchSlice = createSlice({
      name:"search",
     initialState ,

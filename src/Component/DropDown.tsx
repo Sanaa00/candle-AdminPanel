@@ -1,14 +1,20 @@
 import  { useState } from 'react'
-import { orderMenuItem, MenuItemProps } from '../Pages/pages.types';
+import { MenuItemProps } from '../Pages/pages.types';
 import { Link } from 'react-router-dom';
+import { useChangeStateMutation } from '../features/Api/Order';
 function DropDown({OrderMenu,productMenu,id}:MenuItemProps) {
      
   const [isActive, setActive] = useState<boolean>(false);
-  const [setColor] = useState<string>("");
   const handleDropdownClick = () => setActive(!isActive);
-  const handleColor = () => {
-    setActive(!isActive);
-  };
+  
+  const [changeState] = useChangeStateMutation()
+  const changestateHandler = (status:string,id:string) => {
+    changeState({ status: status ,_id:id})
+    console.log("data we send",{ status: status ,_id:id})
+  }
+
+// onclick:()=>changestateHandler("Pending")
+
   return (
     <div>
        <div>
@@ -32,10 +38,10 @@ function DropDown({OrderMenu,productMenu,id}:MenuItemProps) {
                    return (
                         item.name === "View Details" ? <Link
                                     className={`block py-1 pl-3 w-full text-start rounded-sm text-sm hover:bg-gray-100`}
-                             key={item.id} to={OrderMenu?`/orders/${id}`:`/products/${id}`}>{item.name}</Link> :
+                             key={item.id} to={OrderMenu?`/adminpanel/orders/${id}`:`/adminpanel/products/${id}`}>{item.name}</Link> :
                   <button
                     key={item.id}
-                    onClick={item.onclick}
+                         onClick={()=>changestateHandler(item.name,id) }
                     className={`block py-1 pl-3 w-full text-start rounded-sm text-sm hover:bg-gray-100`}
                      >{ item.name}</button>
                 );

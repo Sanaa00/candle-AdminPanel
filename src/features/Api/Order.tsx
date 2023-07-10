@@ -9,17 +9,22 @@ const OrderApi = apiSlice.injectEndpoints({
       providesTags: ["order"],
     }),
       changeState: builder.mutation({
-      query: (item) => ({
-        url: "/cart",
-        method: "POST",
-        body: item,
+        query: ({ status,_id }) => ({
+        url: `/cart/order/${_id}`,
+        method: "PUT",
+        body: {status},
       }),
       invalidatesTags: ["order"],
+      }),
+      getOrderById: builder.query<orderProps,string|undefined>({
+      query: (_id) => `/cart/order/${_id}`,
+      providesTags: ["order"],
     }),
  
   }),
 });
 export const {
   useGetOrdersQuery,
-  useChangeStateMutation
+  useChangeStateMutation,
+  useGetOrderByIdQuery
 } = OrderApi;

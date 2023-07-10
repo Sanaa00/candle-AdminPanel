@@ -44,7 +44,7 @@ function Products() {
     
        <div className="my-2">
         <p className="font-semibold text-gray-800">Summry</p>
-        <p className="text-sm text-gray-800 ">{product.description}</p>
+        <p className="text-sm text-gray-800 ">{product.description.slice(0,80)}...</p>
        </div>
      {( product.amount && product.sell)&& <SalesInfo amount={product.amount} sell={product.sell}/>}
 
@@ -72,7 +72,7 @@ function Products() {
           nextClassName="text-gray-700 px-5 py-2 border-gray-100 border-2 rounded-lg"
           nextLabel={<HiOutlineArrowNarrowRight className="w-6 h-6"/>}
           pageClassName="text-gray-800 px-4 py-2 mx-2 "
-          activeClassName="text-gray-800 rounded-lg bg-purple-300 py-2 px-4 shadow-sm"
+          activeClassName="text-gray-800 rounded-lg bg-customPurple py-2 px-4 shadow-sm"
           renderOnZeroPageCount={null}
         />
     

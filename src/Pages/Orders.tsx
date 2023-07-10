@@ -17,29 +17,22 @@ function Orders() {
   const [page,setPage]=useState<number>(1)
   const { data: orders } = useGetOrdersQuery({ page })
   console.log(orders)
-  // const [changeState] = useChangeStateMutation()
-  // const changestateHandler = () => {
-  //   changeState({status:"Completed"})
-  // }
-   const [changeState] = useChangeStateMutation()
-  const changestateHandler = (status:string) => {
-    changeState({status:status})
-  }
+ 
+  const [changeState] = useChangeStateMutation()
  const orderMenuItem = [
           {
                id: 1,
                name: "View Details",
-              //  onclick:""
           },
           {
                id: 2,
                name: "Pending",
-               onclick:()=>changestateHandler("Pending")
+              //  onclick:()=>changestateHandler("Pending")
           },
           {
                id: 3,
                name: "Completed",
-               onclick:()=>changestateHandler("Completed")
+              //  onclick:()=>changestateHandler("Completed")
           }
      ]
 
@@ -58,7 +51,7 @@ function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-            {orders?.data?.map((row) => (
+            {orders?.data?.Orders?.map((row) => (
                  <TableRow key={row?._id}>
               <TableCell>{row?.user?.firstName}</TableCell>
               <TableCell>{row?.address[0]?.city}</TableCell>
@@ -66,6 +59,7 @@ function Orders() {
                 <TableCell>{row?.status}</TableCell>
                 <TableCell>
                   <DropDown OrderMenu={orderMenuItem} id={row?._id} />
+                  {console.log(row?._id)}
             
                 </TableCell>
             </TableRow>
@@ -83,13 +77,13 @@ function Orders() {
           pageRangeDisplayed={3}
           // pageCount={page}
           marginPagesDisplayed={0}
-          pageCount={orders && orders?.data?.length / 6}
+          pageCount={orders && orders?.data?.Orders?.length / 6 }
           className="flex items-center my-5 mx-2 "
           previousLabel={false}
           nextClassName="text-gray-700 px-5 py-2 border-gray-100 border-2 rounded-lg"
           nextLabel={<HiOutlineArrowNarrowRight className="w-6 h-6"/>}
           pageClassName="text-gray-800 px-4 py-2 mx-2 "
-          activeClassName="text-gray-800 rounded-lg bg-purple-300 py-2 px-4 shadow-sm"
+          activeClassName="text-gray-800 rounded-lg bg-customPurple py-2 px-4 shadow-sm"
           renderOnZeroPageCount={null}
         />
  </div>

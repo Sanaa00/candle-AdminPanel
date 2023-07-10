@@ -6,7 +6,7 @@ export const sidbarName=[
 {
      id:1,
      name:"Dashboard",
-     url:"/",
+     url:"dashboard",
      icon:<MdDashboard className="w-6 h-6"/>
 
 },
