@@ -12,9 +12,10 @@ import {
   TableContainer,
 } from "@mui/material";
 function OrderDetails() {
-  const  {_id } = useParams()
+  const { id } = useParams()
+  // const id=_id
   // console.log(_id)
-  const { data: singleOrder } = useGetOrderByIdQuery(_id)
+  const { data: singleOrder } = useGetOrderByIdQuery(id)
   console.log(singleOrder)
   return (
     <div className=" pt-5 text-gray-800 flex flex-col  ">

@@ -78,3 +78,28 @@ export type buttonProductProps = {
   width?:string,
   onclick?: () => void,
 }
+
+export type searchProps = {
+     search:string
+}
+export type userDataProps = {
+  user:null|user
+ 
+}
+
+export type user = {
+
+    email: string,
+    firstName: string,
+    lastName: string,
+    password: string,
+    role: string
+    _id: string
+  
+}
+
+export type UserQueryProps = {
+  status:string,
+  results:number,
+  data:user[]
+}

@@ -17,7 +17,7 @@ function App() {
         <Route path="/adminpanel" Component={Sidbar}  element={<Sidbar/>}> 
           <Route path="/adminpanel/dashboard" Component={Dashboard}  element={<Dashboard/>}/>
           <Route path="/adminpanel/orders" Component={Orders} element={<Orders/>} />
-          <Route path="/adminpanel/orders/:_id" Component={OrderDetails} element={<OrderDetails/>} />
+          <Route path="/adminpanel/orders/:id" Component={OrderDetails} element={<OrderDetails/>} />
           <Route path="/adminpanel/products" Component={Products} element={<Products />} />
          <Route path="/adminpanel/products/:_id" Component={ProductDetails}  element={<ProductDetails/>}/>
         </Route>

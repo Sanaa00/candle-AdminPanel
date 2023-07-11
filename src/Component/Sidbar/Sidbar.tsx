@@ -9,7 +9,7 @@ function SidbaR() {
       
       <div className='flex flex-col col-start-1 col-end-2  bg-gray-50 h-screen pt-5 border-r-2 border-gray-100 fixed w-1/5'> 
       <div className='flex justify-center items-center'> 
-      <GiCandleFlame className="w-16 h-16 my-2 text-purple-400"/>
+      <GiCandleFlame className="w-16 h-16 my-2 text-customPurple"/>
       </div>
        {sidbarName.map((name)=>{
        return <NavLink to={name.url} key={name.id} className={

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
+import {userDataProps} from "../features/Api/products.types"
+const initialState:userDataProps = {
   user: null,
 };
 

@@ -34,10 +34,10 @@ export type updateProductFromProps = {
      
 }
 export type initialValuesProps = {
-     productName: string,
-     price: number,
-     categoryId: string,
-     description: string
+     productName?: string,
+     price?: number,
+     categoryId?: string,
+     description?: string
 }
 export type loginProps = {
          email: string,

@@ -1,5 +1,5 @@
 import { apiSlice } from "./Api";
-
+import {UserQueryProps, userDataProps} from "./products.types"
 const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation({
@@ -16,6 +16,13 @@ const authApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["user"],
     }),
+    getAllUser: builder.query<UserQueryProps,undefined>({
+      query: () => ({
+        url: "/user",
+        // headers: { Authorization: `Bearer ${token}` },
+      }),
+      providesTags: ["user"],
+    }),
     login: builder.mutation({
       query: (body) => ({
         url: "/user/login",
@@ -27,5 +34,5 @@ const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useSignupMutation, useGetCurrentUserQuery, useLoginMutation } =
+export const { useSignupMutation, useGetCurrentUserQuery, useLoginMutation,useGetAllUserQuery } =
   authApi;

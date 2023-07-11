@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { searchProps } from "./Api/products.types";
 
-type searchProps = {
-     search:string
-}
 const initialState: searchProps = {
      search:""
 }

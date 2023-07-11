@@ -9,11 +9,9 @@ function DropDown({OrderMenu,productMenu,id}:MenuItemProps) {
   
   const [changeState] = useChangeStateMutation()
   const changestateHandler = (status:string,id:string) => {
-    changeState({ status: status ,_id:id})
-    console.log("data we send",{ status: status ,_id:id})
+    changeState({ status: status ,id:id})
+    console.log("data we send",{ status: status ,id:id})
   }
-
-// onclick:()=>changestateHandler("Pending")
 
   return (
     <div>

@@ -3,22 +3,27 @@ import { Formik,Form } from 'formik'
 import {  initialValuesProps } from '../../Pages/pages.types'
 
 import Button from './Button'
-function ProductUpdateForm() {
+import { useUpdateproductMutation } from '../../features/Api/Products'
+function ProductUpdateForm({ id }) {
 
+     const [updateproduct] = useUpdateproductMutation()
         const  initialValues:initialValuesProps={
                productName: "",
                description: "",
                price: 0,
-               categoryId:""
                
           }
 
   return (
-       <div className='flex flex-col bg-gray-50 mr-5 rounded-lg p-5 mb-5'>
-            <Formik onSubmit={(values) => console.log(values)} initialValues={initialValues}>
+       <div className='flex flex-col bg-gray-50 mr-5 rounded-lg p-5 mb-5 w-full'>
+            <Formik onSubmit={(values) => {
+                 updateproduct({ id, productName:values.productName,price:values.price,description:values.description })
+                 console.log(id)
+               
+            }} initialValues={initialValues}>
                  {({ handleSubmit,values,handleBlur,handleChange }) => (
-                      <Form onSubmit={handleSubmit}>
-                             <p className='font-semibold text-gray-800 '>Product name</p>
+               <Form onSubmit={handleSubmit} className='w-full'>
+                    <p className='font-semibold text-gray-800 '>Product name</p>
                     <InputFeild
                          placeholder='Type name here'
                          name="productName"
@@ -26,8 +31,8 @@ function ProductUpdateForm() {
                          value={values.productName}
                          onChange={handleChange}
                          id="productName"
-                                type="text" />
-                             <p className='font-semibold text-gray-800'>Category</p>
+                         type="text" />
+                         {/* <p className='font-semibold text-gray-800'>Category</p>
                            
                     <InputFeild
                          placeholder='Type Category here'
@@ -36,8 +41,8 @@ function ProductUpdateForm() {
                          value={values.categoryId}
                          onChange={handleChange}
                          id="categoryId"
-                                type="text" />
-                             <p className='font-semibold text-gray-800 '>Description</p>
+                         type="text" /> */}
+                         <p className='font-semibold text-gray-800 '>Description</p>
                     <InputFeild
                          placeholder='Type description here'
                          name="description"
@@ -45,8 +50,8 @@ function ProductUpdateForm() {
                          value={values.description}
                          onChange={handleChange}
                          id="description"
-                                type="text" />
-                             <p className='font-semibold text-gray-800 '>Price</p>
+                         type="text" />
+                         <p className='font-semibold text-gray-800 '>Price</p>
                   
                     <InputFeild
                          placeholder='Type price here'
@@ -55,7 +60,7 @@ function ProductUpdateForm() {
                          value={values.price}
                          onChange={handleChange}
                          id="price"
-                                type={"number"} />
+                         type={"number"} />
                            
          
                     <div className='w-48'>

@@ -17,8 +17,6 @@ function Orders() {
   const [page,setPage]=useState<number>(1)
   const { data: orders } = useGetOrdersQuery({ page })
   console.log(orders)
- 
-  const [changeState] = useChangeStateMutation()
  const orderMenuItem = [
           {
                id: 1,
@@ -56,11 +54,14 @@ function Orders() {
               <TableCell>{row?.user?.firstName}</TableCell>
               <TableCell>{row?.address[0]?.city}</TableCell>
               <TableCell>{row?.totalprice}</TableCell>
-                <TableCell>{row?.status}</TableCell>
+                <TableCell>{row?.status === "order" ? <div className="flex items-center">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>Order</div> : 
+                  row?.status==="Completed"?<div className="flex items-center">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>Completed</div>:<div className="flex items-center">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>Pending</div>
+                  }</TableCell>
                 <TableCell>
                   <DropDown OrderMenu={orderMenuItem} id={row?._id} />
-                  {console.log(row?._id)}
-            
                 </TableCell>
             </TableRow>
           ))}

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchHandler } from '../features/searchSlice'
+import { searchProps } from "../features/Api/products.types";
 function Search() {
-  const  {search}  = useSelector((state) => state.search)
+  const  {search}  = useSelector((state:searchProps) => state.search)
   const dispatch=useDispatch()
      const onChandeHandler=(event: React.ChangeEvent<HTMLInputElement>)=>{
         dispatch(searchHandler(event.target.value))  

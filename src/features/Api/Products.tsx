@@ -1,5 +1,5 @@
 import  apiSlice from "./Api";
-import { abc,Response ,singleProductProps} from "./products.types"
+import { abc,orderProductsProps,productsProps,Response ,singleProductProps} from "./products.types"
 
 const productApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -47,10 +47,18 @@ const productApi = apiSlice.injectEndpoints({
     }),
 
     discountToProduct: builder.mutation({
-      query: (item) => ({
-        url: `/products/${item.id}/descount`,
+      query: ({id,discount}) => ({
+        url: `/products/${id}/descount`,
         method: "PUT",
-        body: item.discount,
+        body: {discount},
+      }),
+      invalidatesTags: ["product"],
+    }),
+      updateproduct: builder.mutation({
+      query: ({id,productName,price,description}) => ({
+        url: `/products/updateproduct/${id}`,
+        method: "PUT",
+        body: {productName,price,description},
       }),
       invalidatesTags: ["product"],
     }),
@@ -62,6 +70,7 @@ export const {
   useFavouriteMutation,
   useGetProductsByCategoryQuery,
   useAddProductMutation,
+  useUpdateproductMutation,
   useGetProductsForAdminQuery,
   useDeleteProductMutation,
   useDiscountToProductMutation,
