@@ -1,4 +1,4 @@
-import { useChangeStateMutation } from "../features/Api/Order";
+
 
  export const Productsss=[
    
@@ -742,23 +742,3 @@ import { useChangeStateMutation } from "../features/Api/Order";
     }
 }; 
   
-
-//  const [changeState] = useChangeStateMutation()
-//   const changestateHandler = () => {
-//     changeState({status:"Completed"})
-//   }
-// export const orderMenuItem = [
-//           {
-//                id: 1,
-//                name: "Details"
-//           },
-//           {
-//                id: 2,
-//                name: "Pending"
-//           },
-//           {
-//                id: 3,
-//                name: "Completed",
-//                handler:changestateHandler
-//           }
-//      ]

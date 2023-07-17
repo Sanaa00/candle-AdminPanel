@@ -3,17 +3,20 @@ import ReactPaginate from "react-paginate";
 import SalesInfo from "../Component/products/SalesInfo"
 import {  useState } from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-
 import {  useGetProductsQuery } from "../features/Api/Products";
 import { useSelector } from "react-redux";
 import DropDown from "../Component/DropDown";
-import { match } from "assert";
- import { Slide, ToastContainer, toast } from "react-toastify";
+import { searchProps } from "../features/Api/products.types";
+
 function Products() {
+  interface RootState {
+  search: searchProps;
+}
+
 
  const [page, setPage]= useState<number>(1);
- const  {search}  = useSelector((state) => state.search)
-  const { data: products, isError, isLoading, error } = useGetProductsQuery({ search, page })
+ const  {search}  = useSelector((state:RootState) => state.search)
+  const { data: products } = useGetProductsQuery({ search, page })
   console.log(products)
   const productsMenuItem = [
     
@@ -23,21 +26,7 @@ function Products() {
   ]
  
   return (
-    // <div>
-    //    <ToastContainer
-    //       position="bottom-center"
-    //       autoClose={3000}
-    //       hideProgressBar
-    //       newestOnTop
-    //       closeOnClick={false}
-    //       rtl={false}
-    //       pauseOnFocusLoss={false}
-    //       draggable={false}
-    //       pauseOnHover
-    //       theme="light"
-    //       transition={Slide}
-    //       className="h-32"
-    //     />
+
       <div className="px-8 pt-5">
       
      <p className="font-semibold text-gray-800 text-xl">  All Products</p>
@@ -75,15 +64,13 @@ function Products() {
     
       <ReactPaginate
           breakLabel="..."
-            forcePage={page - 1}
-          // onPageChange={handlePageClick}
+          forcePage={page - 1}
           onPageChange={(e) => {
             setPage(e.selected + 1);
           }}
           pageRangeDisplayed={3}
-          // pageCount={page}
-          marginPagesDisplayed={0}
-          pageCount={products && Math.ceil(products?.data?.result / 6)}
+        marginPagesDisplayed={0}
+          pageCount={products && products?.data && products?.data?.result ? Math.ceil(products?.data?.result / 6) : 0}
           className="flex items-center my-5 mx-2 "
           previousLabel={false}
           nextClassName="text-gray-700 px-5 py-2 border-gray-100 border-2 rounded-lg"
@@ -94,7 +81,7 @@ function Products() {
         />
     
     </div>
-    // </div >
+
    
   )
 }

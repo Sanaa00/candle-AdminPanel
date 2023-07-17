@@ -1,5 +1,5 @@
 import { apiSlice } from "./Api";
-import {UserQueryProps, userDataProps} from "./products.types"
+import {UserQueryProps} from "./products.types"
 const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation({
@@ -19,7 +19,7 @@ const authApi = apiSlice.injectEndpoints({
     getAllUser: builder.query<UserQueryProps,undefined>({
       query: () => ({
         url: "/user",
-        // headers: { Authorization: `Bearer ${token}` },
+
       }),
       providesTags: ["user"],
     }),

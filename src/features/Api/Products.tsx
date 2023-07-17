@@ -1,5 +1,5 @@
 import  apiSlice from "./Api";
-import { abc,orderProductsProps,productsProps,Response ,singleProductProps} from "./products.types"
+import { abc,Response ,singleProductProps} from "./products.types"
 
 const productApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

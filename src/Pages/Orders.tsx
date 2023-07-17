@@ -1,8 +1,7 @@
 import { useState } from "react"
-import { useChangeStateMutation, useGetOrdersQuery } from "../features/Api/Order"
+import {  useGetOrdersQuery } from "../features/Api/Order"
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"
 import ReactPaginate from "react-paginate"
-// import { orderMenuItem } from "./pages.utility"
 import {
   Table,
   TableBody,
@@ -70,15 +69,13 @@ function Orders() {
     </TableContainer>
       <ReactPaginate
           breakLabel="..."
-            forcePage={page - 1}
-          // onPageChange={handlePageClick}
+          forcePage={page - 1}
           onPageChange={(e) => {
             setPage(e.selected + 1);
           }}
           pageRangeDisplayed={3}
-          // pageCount={page}
           marginPagesDisplayed={0}
-          pageCount={orders && orders?.data?.Orders?.length / 6 }
+          pageCount={orders && orders.data && orders.data.Orders ? Math.ceil(orders.data.Orders.length / 6) : 0}
           className="flex items-center my-5 mx-2 "
           previousLabel={false}
           nextClassName="text-gray-700 px-5 py-2 border-gray-100 border-2 rounded-lg"

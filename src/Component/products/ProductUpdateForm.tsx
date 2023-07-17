@@ -4,7 +4,10 @@ import {  initialValuesProps } from '../../Pages/pages.types'
 
 import Button from './Button'
 import { useUpdateproductMutation } from '../../features/Api/Products'
-function ProductUpdateForm({ id }) {
+ type idprorpd = {
+     id:string
+}
+function ProductUpdateForm({ id }:idprorpd) {
 
      const [updateproduct] = useUpdateproductMutation()
         const  initialValues:initialValuesProps={

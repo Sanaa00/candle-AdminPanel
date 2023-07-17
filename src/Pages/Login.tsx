@@ -12,10 +12,14 @@ function Login() {
    const initialValues:loginProps ={
       email: "",
       password: "",
-    }
+  }
+  interface RootState {
+  user: userDataProps;
+}
+
   const dispatch = useDispatch();
   const [token, setToken] = useState();
-  const { user } = useSelector((state:userDataProps) => state.user);
+  const { user } = useSelector((state:RootState) => state.user);
   console.log(user)
   const [ login,{ data: loginData, isError: loginDataIsError },] = useLoginMutation();
   const { data: userData, isError: userDataIsError, isSuccess } = useGetCurrentUserQuery(token, { skip: !token });

@@ -1,9 +1,8 @@
 import {useState} from 'react'
 import { Navigate, useParams } from 'react-router-dom'
-import { useDeleteProductMutation, useDiscountToProductMutation, useGetProductByIdQuery } from '../features/Api/Products'
+import { useDeleteProductMutation,  useGetProductByIdQuery } from '../features/Api/Products'
 import Button from '../Component/products/Button'
 import ProductUpdateForm from '../Component/products/ProductUpdateForm'
-import { Slide, ToastContainer, toast } from "react-toastify";
 import DiscountForm from '../Component/products/DiscountForm'
 function ProductDetails() {
  
@@ -11,7 +10,7 @@ function ProductDetails() {
   const id=_id
   const { data: singleProduct } = useGetProductByIdQuery(_id)
   console.log(singleProduct)
-  // const [discounttoProduct]=useDiscountToProductMutation()
+
   const [delele,setDelete]=useState<boolean>(false)
   const [deleteProduct]=useDeleteProductMutation()
   const [update, setUpdate] = useState<boolean>(false)
@@ -55,7 +54,8 @@ if(delele===true)return(<Navigate to="/adminpanel/products" replace />)
               return <div key={review?._id} className='w-full bg-gray-50 p-4 mt-2 rounded-lg mr-5  hover:shadow hover-duration-500 duration-500'>{ review?.message}</div>
             }) :<p className='bg-gray-50 p-4 mt-2 rounded-lg mr-5  hover:shadow hover-duration-500 duration-500'>No review yet</p>}</div>
           </div>
-          <div className='mt-10 w-full'> {update === true ? <ProductUpdateForm id={ singleProduct?.data?._id} /> : null}</div>
+          { singleProduct?.data?._id &&<div className='mt-10 w-full'> {update === true ? <ProductUpdateForm id={ singleProduct?.data?._id} /> : null}</div>}
+          
           <div className='mt-5 w-full'>{discount === true ? <DiscountForm data={singleProduct } />:null}</div>
          
     

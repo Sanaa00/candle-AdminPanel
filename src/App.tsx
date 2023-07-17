@@ -10,8 +10,6 @@ import Login from "./Pages/Login";
 function App() {
   return (
 <>
-
-
       <Routes>
         <Route path="/" Component={Login} element={ <Login/>} />
         <Route path="/adminpanel" Component={Sidbar}  element={<Sidbar/>}> 

@@ -12,12 +12,17 @@ import Box from "../Component/dashboard/Box";
 import { useGetProductsQuery } from "../features/Api/Products";
 import { useSelector } from "react-redux";
 import CategoryBox from "../Component/dashboard/CategoryBox";
+
+interface RootState {
+  search: searchProps;
+}
+
 function Dashboard() {
   const { data: allUsers } = useGetAllUserQuery(undefined)
   const page = 1
   const { data: allOrders } = useGetOrdersQuery({ page })
-  // console.log(allOrders)
-  const { search } = useSelector((state) => state.search)
+
+  const { search } = useSelector((state:RootState) => state.search)
  
   const { data: allProducts } = useGetProductsQuery({ search, page })
  console.log(allProducts)
