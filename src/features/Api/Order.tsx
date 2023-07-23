@@ -1,5 +1,5 @@
 import  apiSlice from "./Api";
-import { OrderPage,orderProps } from "./products.types"
+import { OrderPage,orderProps ,orderPropsforSIngleItem} from "./products.types"
 
 const OrderApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -16,7 +16,7 @@ const OrderApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["order"],
       }),
-      getOrderById: builder.query<orderProps,string|undefined>({
+      getOrderById: builder.query<orderPropsforSIngleItem,string|undefined>({
       query: (id) => `/cart/order/${id}`,
       providesTags: ["order"],
     }),

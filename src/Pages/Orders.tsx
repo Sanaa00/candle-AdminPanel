@@ -24,12 +24,12 @@ function Orders() {
           {
                id: 2,
                name: "Pending",
-              //  onclick:()=>changestateHandler("Pending")
+
           },
           {
                id: 3,
                name: "Completed",
-              //  onclick:()=>changestateHandler("Completed")
+          
           }
      ]
 

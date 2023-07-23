@@ -20,7 +20,7 @@ function ProductDetails() {
   }
   const onDiscountHandler = () => {
     setDiscount(!discount)
-    // discounttoProduct(singleProduct)
+
   }
 
   const onDeleteHandler = () => {
@@ -55,8 +55,10 @@ if(delele===true)return(<Navigate to="/adminpanel/products" replace />)
             }) :<p className='bg-gray-50 p-4 mt-2 rounded-lg mr-5  hover:shadow hover-duration-500 duration-500'>No review yet</p>}</div>
           </div>
           { singleProduct?.data?._id &&<div className='mt-10 w-full'> {update === true ? <ProductUpdateForm id={ singleProduct?.data?._id} /> : null}</div>}
-          
-          <div className='mt-5 w-full'>{discount === true ? <DiscountForm data={singleProduct } />:null}</div>
+          {
+            singleProduct && <div className='mt-5 w-full'>{discount === true ? <DiscountForm data={singleProduct } />:null}</div>
+          }
+         
          
     
         </div>

@@ -71,7 +71,18 @@ export type orderProps = {
   data:justOrderProps
   status: string
 }
-
+export type orderPropsforSIngleItem = {
+  data:singleOrderPropsType
+  status: string
+}
+export type singleOrderPropsType = {
+   address: addressProps[],
+    products: orderProductsProps[],
+    status: string,
+    totalprice: totalprice[],
+    user: userOrder,
+    _id: string
+}
 export type buttonProductProps = {
   text: string,
   type?: 'submit' | 'reset' | 'button' | undefined,

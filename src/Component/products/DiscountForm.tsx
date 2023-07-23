@@ -5,8 +5,13 @@ import InputFeild from '../InputFeild'
 import Button from './Button'
 import { useDiscountToProductMutation } from '../../features/Api/Products'
 import * as Yup from "yup";
-function DiscountForm({ data }) {
+import { singleProductProps } from '../../features/Api/products.types'
+type dataProps = {
+     data:singleProductProps
+}
+function DiscountForm({ data }:dataProps) {
      const id = data?.data?._id
+     console.log(data,"data")
      const [discounttoProduct] = useDiscountToProductMutation()
      const initialValues: initialValuesProps = { price: 0 }
      
@@ -34,7 +39,7 @@ function DiscountForm({ data }) {
                     <InputFeild
                          placeholder='Type price here'
                          name="price"
-                         errors={touched.price}
+                         // errors={touched.price}
                          onBlur={handleBlur}
                          value={values.price}
                          onChange={handleChange}

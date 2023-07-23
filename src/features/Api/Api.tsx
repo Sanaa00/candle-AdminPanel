@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `https://candlesss.onrender.com/api`,
     // import.meta.env.VITE_BASE_URL
-   
+    // baseUrl: import.meta.env.VITE_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("access_token");
 

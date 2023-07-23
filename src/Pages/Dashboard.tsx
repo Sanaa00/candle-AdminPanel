@@ -83,20 +83,12 @@ function Dashboard() {
     <div className="grid grid-cols-4 ">
   
    {category.map((item) => {
-        //  <p className="font-semibold text-gray-800 text-xl">Category</p>
+
         return <CategoryBox key={item.id} name={item.name} icon={item.icon}  />
         })}
       {dashboard.map((item) => {
         return <Box key={item.id} name={item.name} icon={item.icon} number={item.number} />
       })}
-      
-      {/* <p className="font-semibold text-gray-800 text-xl">Category</p> */}
-      {/* <div>
-         <p className="font-semibold text-gray-800 text-xl">Category</p> */}
-     
-    {/* </div> */}
-     
-
       
     </div></div>
   

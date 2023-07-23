@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { AiOutlineUser } from "react-icons/ai";
 import { useGetOrderByIdQuery } from "../features/Api/Order";
-// import { GrDeliver } from "react-icons/gr";
 import { BsSend } from "react-icons/bs";
 import {
   Table,
@@ -13,10 +12,8 @@ import {
 } from "@mui/material";
 function OrderDetails() {
   const { id } = useParams()
-  // const id=_id
-  // console.log(_id)
   const { data: singleOrder } = useGetOrderByIdQuery(id)
-  console.log(singleOrder)
+  // console.log("orderrrrrrrrrrrrrr",singleOrder)
   return (
     <div className=" pt-5 text-gray-800 flex flex-col  ">
       <div className="flex">
@@ -43,7 +40,7 @@ function OrderDetails() {
              
             <p className=' mr-1'>city:</p>
             <p className='mr-2'>{singleOrder?.data?.address[0]?.city}</p>
-            {/* <p className='mr-5'>{singleOrder?.data?.user?.lastName}</p> */}
+    
           </div>
           <div className="flex mt-2"><p className='mt-2 mr-1'>street:</p> <p className='mt-2 mr-5'>{singleOrder?.data?.address[0]?.street}</p></div>
          
